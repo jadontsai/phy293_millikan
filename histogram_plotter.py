@@ -26,7 +26,7 @@ def histogram_with_bin_size(csv_file: str, column_name: str, bin_size: float, ou
     plt.text(
         max_bin_center,
         max_count + (0.02 * max(counts)),
-        f"Peak: {int(max_count)} values\nat ~{max_bin_center:.2f}",
+        f"Peak: {int(max_count)} values\n at {max_bin_center:.2f} +/- {bin_size:.2f}",
         ha='center',
         va='bottom',
         fontsize=9,
@@ -38,8 +38,8 @@ def histogram_with_bin_size(csv_file: str, column_name: str, bin_size: float, ou
         base = os.path.splitext(os.path.basename(csv_file))[0]
         output_file = f"{base}_histogram_{column_name}.png"
 
-    plt.title(f"Histogram of {column_name}")
-    plt.xlabel(column_name)
+    plt.title(f"Histogram of charge data")
+    plt.xlabel("Charge (Coloumbs)")
     plt.ylabel("Frequency")
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.savefig(output_file, bbox_inches='tight')
